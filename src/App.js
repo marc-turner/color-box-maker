@@ -1,8 +1,16 @@
 import React from 'react';
-import './App.css';
+import BoxList from './BoxList';
 
 function App() {
-    return <div className='App'></div>;
+    return (
+        <div style={appStyle}>
+            <BoxList />
+        </div>
+    );
 }
+
+const appStyle = {
+    textAlign: 'center',
+};
 
 export default App;
