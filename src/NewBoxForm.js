@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 class NewBoxForm extends Component {
     constructor(props) {
@@ -13,6 +14,8 @@ class NewBoxForm extends Component {
     }
     handleSubmit(e) {
         e.preventDefault();
+        const newBox = { ...this.state, id: uuidv4() };
+        this.props.createBox(newBox);
         this.setState({
             width: '',
             height: '',
@@ -26,42 +29,39 @@ class NewBoxForm extends Component {
     }
     render() {
         return (
-            <div>
-                FROM NEWBOXFORM
-                <form>
-                    <label htmlFor='width'>Width</label>
-                    <input
-                        type='number'
-                        id='width'
-                        name='width'
-                        style={inputStyle}
-                        value={this.state.width}
-                        onChange={this.handleChange}
-                    />
-                    <br></br>
-                    <label htmlFor='height'>Height</label>
-                    <input
-                        type='number'
-                        id='height'
-                        name='height'
-                        style={inputStyle}
-                        value={this.state.height}
-                        onChange={this.handleChange}
-                    />
-                    <br></br>
-                    <label htmlFor='color'>Color</label>
-                    <input
-                        type='text'
-                        id='color'
-                        name='color'
-                        style={inputStyle}
-                        value={this.state.color}
-                        onChange={this.handleChange}
-                    />
-                    <br></br>
-                    <button>ADD BOX</button>
-                </form>
-            </div>
+            <form onSubmit={this.handleSubmit}>
+                <label htmlFor='width'>Width</label>
+                <input
+                    type='number'
+                    id='width'
+                    name='width'
+                    style={inputStyle}
+                    value={this.state.width}
+                    onChange={this.handleChange}
+                />
+                <br></br>
+                <label htmlFor='height'>Height</label>
+                <input
+                    type='number'
+                    id='height'
+                    name='height'
+                    style={inputStyle}
+                    value={this.state.height}
+                    onChange={this.handleChange}
+                />
+                <br></br>
+                <label htmlFor='color'>Color</label>
+                <input
+                    type='text'
+                    id='color'
+                    name='color'
+                    style={inputStyle}
+                    value={this.state.color}
+                    onChange={this.handleChange}
+                />
+                <br></br>
+                <button>ADD BOX</button>
+            </form>
         );
     }
 }

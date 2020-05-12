@@ -3,14 +3,10 @@ import BoxList from './BoxList';
 
 function App() {
     return (
-        <div style={appStyle}>
+        <div>
             <BoxList />
         </div>
     );
 }
-
-const appStyle = {
-    textAlign: 'center',
-};
 
 export default App;
